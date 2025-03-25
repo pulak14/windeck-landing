@@ -1,115 +1,84 @@
-import React, { useEffect } from 'react';
+import React from "react";
 
-const App = () => {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://tally.so/widgets/embed.js";
-    script.onload = () => {
-      if (window.Tally) window.Tally.loadEmbeds();
-    };
-    document.body.appendChild(script);
-  }, []);
-
+function App() {
   return (
-    <>
-      <header style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '1rem 2rem',
-        backgroundColor: '#f9fafb',
-        borderBottom: '1px solid #eee'
-      }}>
-        <h1 style={{
-          fontWeight: 700,
-          fontSize: '1.25rem',
-          color: '#4f46e5',
-          margin: 0
-        }}>WinDeck</h1>
-
-        <nav style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '2rem'
-        }}>
-          <a href="#features" style={{ textDecoration: 'none', color: '#111' }}>Features</a>
-          <a href="#pricing" style={{ textDecoration: 'none', color: '#111' }}>Pricing</a>
-          <a href="#resources" style={{ textDecoration: 'none', color: '#111' }}>Resources</a>
-          <a href="#waitlist" style={{
-            padding: '0.5rem 1rem',
-            backgroundColor: '#4f46e5',
-            color: 'white',
-            borderRadius: '999px',
-            textDecoration: 'none',
-            fontWeight: '500'
-          }}>Join the Waitlist</a>
+    <div className="min-h-screen bg-[#f9fbff] text-[#0d0d0d]">
+      {/* Navbar */}
+      <header className="flex justify-between items-center px-6 py-4 shadow-sm bg-white">
+        <h1 className="text-2xl font-bold text-[#4338ca]">WinDeck</h1>
+        <nav className="flex items-center space-x-6 text-sm font-medium">
+          <a href="#features" className="hover:text-[#4338ca]">Features</a>
+          <a href="#pricing" className="hover:text-[#4338ca]">Pricing</a>
+          <a href="#resources" className="hover:text-[#4338ca]">Resources</a>
+          <a
+            href="#waitlist"
+            className="bg-[#4338ca] text-white px-4 py-2 rounded-full hover:bg-[#3730a3]"
+          >
+            Join the Waitlist
+          </a>
         </nav>
       </header>
 
-      <main style={{ padding: "3rem 2rem", fontFamily: "sans-serif", maxWidth: "800px", margin: "auto" }}>
-        <span style={{
-          backgroundColor: "#e0e7ff",
-          color: "#3730a3",
-          fontSize: "0.75rem",
-          padding: "0.25rem 0.5rem",
-          borderRadius: "999px",
-          fontWeight: "600",
-        }}>
+      {/* Hero */}
+      <section className="text-center px-6 py-20" id="hero">
+        <span className="text-xs uppercase tracking-wide bg-[#eef2ff] text-[#4338ca] px-3 py-1 rounded-full">
           AI-Powered Proposal Generator
         </span>
-
-        <h2 style={{ fontSize: "2.25rem", fontWeight: "bold", marginTop: "1rem" }}>
+        <h2 className="text-4xl md:text-5xl font-extrabold mt-4 leading-tight max-w-3xl mx-auto">
           Win more clients with AI-powered proposals — in under 60 seconds.
         </h2>
-
-        <p style={{ marginTop: "1rem", fontSize: "1.125rem", color: "#555" }}>
+        <p className="text-gray-600 mt-4 max-w-xl mx-auto">
           Turn your client notes into stunning proposals without touching a doc.
         </p>
-
-        <div style={{ marginTop: "1.5rem", display: "flex", gap: "1rem" }}>
-          <a href="#waitlist" style={{
-            padding: "0.75rem 1.5rem",
-            backgroundColor: "#4f46e5",
-            color: "#fff",
-            textDecoration: "none",
-            borderRadius: "6px",
-            fontWeight: "500"
-          }}>
+        <div className="flex justify-center space-x-4 mt-6">
+          <a
+            href="#waitlist"
+            className="bg-[#4338ca] text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-[#3730a3]"
+          >
             Join the Waitlist
           </a>
-          <a href="#how" style={{
-            padding: "0.75rem 1.5rem",
-            backgroundColor: "#fff",
-            border: "1px solid #ddd",
-            textDecoration: "none",
-            borderRadius: "6px",
-            fontWeight: "500"
-          }}>
+          <a
+            href="#how-it-works"
+            className="bg-white border border-gray-300 px-6 py-3 rounded-full text-sm font-semibold hover:bg-gray-100"
+          >
             See How It Works
           </a>
         </div>
+      </section>
 
-        <section id="form" style={{
-          marginTop: "4rem",
-          backgroundColor: "#f9fafb",
-          padding: "2rem",
-          borderRadius: "12px",
-          boxShadow: "0 0 10px rgba(0,0,0,0.04)"
-        }}>
+      {/* Embedded Tally Form */}
+      <section id="waitlist" className="px-4 max-w-3xl mx-auto mb-20">
+        <div className="bg-white p-6 rounded-xl shadow-md">
+          <h3 className="text-xl font-semibold mb-4">WinDeck is built for closers!</h3>
           <iframe
             data-tally-src="https://tally.so/embed/wvzYVX?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
             loading="lazy"
             width="100%"
-            height="600"
+            height="486"
             frameBorder="0"
             marginHeight={0}
             marginWidth={0}
             title="Thank you for your interest!"
           ></iframe>
-        </section>
-      </main>
-    </>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              var d=document,w="https://tally.so/widgets/embed.js",v=function(){
+                "undefined"!=typeof Tally?Tally.loadEmbeds():
+                d.querySelectorAll("iframe[data-tally-src]:not([src])")
+                .forEach(function(e){e.src=e.dataset.tallySrc});
+              };
+              if("undefined"!=typeof Tally)v();
+              else if(d.querySelector('script[src="'+w+'"]')==null){
+                var s=d.createElement("script");
+                s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s)
+              }`,
+            }}
+          ></script>
+        </div>
+      </section>
+    </div>
   );
-};
+}
 
 export default App;
