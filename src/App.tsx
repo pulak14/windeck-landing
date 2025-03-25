@@ -89,18 +89,24 @@ const App = () => {
           </a>
         </div>
 
-        <section id="form" style={{ marginTop: "4rem" }}>
-          <iframe
-            data-tally-src="https://tally.so/embed/wvzYVX?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-            loading="lazy"
-            width="100%"
-            height="486"
-            frameBorder="0"
-            marginHeight={0}
-            marginWidth={0}
-            title="Thank you for your interest!"
-          ></iframe>
-        </section>
+      <section id="form" style={{
+  marginTop: "4rem",
+  maxHeight: "600px",
+  overflow: "hidden",
+  borderRadius: "12px",
+  boxShadow: "0 0 10px rgba(0,0,0,0.05)"
+}}>
+  <iframe
+    data-tally-src="https://tally.so/embed/wvzYVX?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+    loading="lazy"
+    width="100%"
+    height="600"
+    frameBorder="0"
+    marginHeight={0}
+    marginWidth={0}
+    title="Thank you for your interest!"
+  ></iframe>
+</section>
       </main>
     </>
   );
